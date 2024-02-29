@@ -1,0 +1,38 @@
+<main>
+
+  <div class="container">
+
+    <section class="inputClient">
+      <button class="addClient">Cadastrar Cliente</button>
+    </section>
+    <section class="search-container">
+      <input type="text" name="search" class="search" alt="campo de pesquisa" placeholder="Joao vianna...">
+      <button>Procurar</button>
+    </section>
+
+  </div>
+
+  <div class="container-form">
+    <table>
+        <thead>
+          <tr>
+            <th>CPF</th>
+            <th>NOME</th>
+            <th>EMAIL</th>
+            <th>TELEFONE</th>
+            <th>AÇÕES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of clients">
+            <td>{{c.cpf}}</td>
+            <td>{{c.name}}</td>
+            <td>{{c.email}}</td>
+            <td>{{c.tel}}</td>
+            <td></td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+
+</main>
