@@ -1,15 +1,25 @@
 <div class="container-cadastro">
   <h1>Cadastrar Cliente</h1>
 
-  <form class="container-form">
-    <input type="text" placeholder="CPF">
-    <input type="text" placeholder="NOME">
-    <input type="text" placeholder="E-MAIL">
-    <input type="text" placeholder="TELEFONE">
 
-  </form>
-  <div class="action">
-    <button routerLink="/" class="btn1">Cadastrar</button>
+  <form class="container-form" (ngSubmit)="cadastrar()">
+    
+    <input type="number" placeholder="CPF" name="cpf" required [(ngModel)]="client.cpf">
+    <input type="text" placeholder="NOME" name="name" required [(ngModel)]="client.name">
+    <input type="text" placeholder="E-MAIL" name="email" required [(ngModel)]="client.email">
+    <input type="number" placeholder="TELEFONE" name="tel" required [(ngModel)]="client.tel">
+
+    <button type="submit" class="btn1" value="Cadastrar">Cadastrar</button>
     <button routerLink="/" class="btn2">Cancelar</button>
-  </div>
+  </form>
+
+  <!-- <ng-template #loading>
+    <div>
+      <h3>Usuario cadastrado com sucesso</h3>
+    </div>
+    <div #loadingNoError>
+      CPF invalido ou E-mail ja cadastrado
+    </div>
+  </ng-template> -->
 </div>
+
