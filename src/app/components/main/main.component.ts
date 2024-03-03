@@ -25,6 +25,7 @@ export class MainComponent {
 
   ngOnInit():void{
     this.selecionar();
+    console.log(this.clients)
   }
 
 }

@@ -10,11 +10,16 @@ export class ClientService {
 
   private url:string = 'http://localhost:8080';
   private urlPost:string = 'http://localhost:8080/cadastrar';
+  private urlCartoes:string = 'http://localhost:8080/cartoes';
 
   constructor(private http:HttpClient) { }
 
   selecionar():Observable<Client[]>{
       return this.http.get<Client[]>(this.url)
+  }
+
+  selecionarCartoes():Observable<Client[]>{
+    return this.http.get<Client[]>(this.urlCartoes)
   }
 
   cadastrar(obj:Client):Observable<Client>{
