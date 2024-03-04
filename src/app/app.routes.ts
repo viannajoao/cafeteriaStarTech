@@ -3,6 +3,7 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { MainComponent } from './components/main/main.component';
 import { NgModule } from '@angular/core';
 import { CartoesComponent } from './components/cartoes/cartoes.component';
+import { AddCreditoComponent } from './components/add-credito/add-credito.component';
 
 
  export const routes: Routes = [
@@ -15,8 +16,12 @@ import { CartoesComponent } from './components/cartoes/cartoes.component';
     component: MainComponent
   },
   {
-    path: 'cartoes',
+    path: 'cadastrarCartoes',
     component: CartoesComponent
+  },
+  {
+    path: 'credito',
+    component: AddCreditoComponent
   }
 ];
 

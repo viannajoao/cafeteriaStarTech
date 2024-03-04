@@ -1,16 +1,12 @@
-<nav class="screenFlex">
-  <div class="logo" routerLink="/">
-    <img src="../../../assets/Logo_cafeteria.png">
-  </div>
-  <ol>
-    <li>Clientes</li>
-    <li routerLink="cartoes">Cartoes</li>
-    <li>Compras</li>
-    <li>Relatorio</li>
-  </ol>
-  <div class="navigation">
-    <!-- <button class="button"></button>
-    <button class="button"></button> -->
-    <button class="login" #campoButton (click)="visualizar()">Log in / Sign in</button>
-  </div>
-</nav>
+<mat-toolbar color="primary">
+  <span><a routerLink="/">ByteCard</a></span>
+
+  <div class="spacer"></div>
+
+  <a mat-button routerLink="/">Clientes</a>
+  <a mat-button routerLink="credito">Cartoes</a>
+  <a mat-button>Compras</a>
+  <a mat-button>Relatorio</a>
+  <a mat-raised-button color="accent">sign in</a>
+
+</mat-toolbar>

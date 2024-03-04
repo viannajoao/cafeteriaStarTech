@@ -1,10 +1,20 @@
-<h4>Basic mat-select</h4>
-<mat-form-field>
-  <mat-label>Favorite food</mat-label>
+<!-- <mat-form-field>
+  <mat-label>Clientes</mat-label>
   <mat-select>
 
     @for (c of clients; track clients) {
-      <mat-option [value]="c.name">{{c.name}}</mat-option>
+      <mat-option [value]="c.name" >{{c.name}}</mat-option >
     }
   </mat-select>
-</mat-form-field>
+</mat-form-field> -->
+<form class="container-form" (ngSubmit)="cadastrar()" >
+    
+  <label for="clientes">Escolha um Cliente</label>
+  <select [(ngModel)]="credit.client" name="client" >
+    <option *ngFor="let c of clients" name="client">{{c.name}}</option>
+  </select>
+  <input type="number" placeholder="Limite" required name="limit" [(ngModel)]="credit.limity">
+
+  <button type="submit" class="btn1" value="Cadastrar">Cadastrar</button>
+  <button routerLink="/" class="btn2">Cancelar</button>
+</form>
