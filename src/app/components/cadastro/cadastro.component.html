@@ -1,15 +1,17 @@
 <div class="container-cadastro">
   <h1>Cadastrar Cliente</h1>
 
-  <form class="container-form">
-    <input type="number" placeholder="CPF" name="cpf" [(ngModel)]="client.cpf">
-    <input type="text" placeholder="NOME" name="name" [(ngModel)]="client.name">
-    <input type="text" placeholder="E-MAIL" name="email" [(ngModel)]="client.email">
-    <input type="number" placeholder="TELEFONE" name="tel" [(ngModel)]="client.tel">
 
-  </form>
-  <div class="action">
-    <button class="btn1" (click)="cadastrar()">Cadastrar</button>
+  <form class="container-form" (ngSubmit)="cadastrar()">
+    
+    <input type="number" placeholder="CPF" name="cpf" required [(ngModel)]="client.cpf">
+    <input type="text" placeholder="NOME" name="name" required [(ngModel)]="client.name">
+    <input type="text" placeholder="E-MAIL" name="email" required [(ngModel)]="client.email">
+    <input type="number" placeholder="TELEFONE" name="tel" required [(ngModel)]="client.tel">
+
+    <button type="submit" class="btn1" value="Cadastrar">Cadastrar</button>
     <button routerLink="/" class="btn2">Cancelar</button>
-  </div>
+  </form>
+
 </div>
+

@@ -1,0 +1,25 @@
+<!-- <mat-form-field>
+  <mat-label>Clientes</mat-label>
+  <mat-select>
+
+    @for (c of clients; track clients) {
+      <mat-option [value]="c.name" >{{c.name}}</mat-option >
+    }
+  </mat-select>
+</mat-form-field> -->
+<form class="container-form" (ngSubmit)="cadastrar()" >
+
+  <h1>Cadastramento de Cartão</h1>
+    
+  <!--<label for="clientes">Escolha um Cliente</label> -->
+  <div class="grid">
+  <select [(ngModel)]="credit.client" name="client" >
+    <option *ngFor="let c of clients" name="client">{{c.name}}</option>
+  </select>
+  <input type="number" placeholder="Limite" required name="limit" [(ngModel)]="credit.limity">
+</div>
+<div class="buttons">
+  <button type="submit" class="btn1" value="Cadastrar" mat-raised-button color="primary" >Cadastrar</button>
+  <button mat-raised-button color="accent" routerLink="/" class="btn2"  >Cancelar</button>
+</div> 
+</form>

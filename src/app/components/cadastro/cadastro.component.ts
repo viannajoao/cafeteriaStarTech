@@ -1,41 +1,63 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule,  } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Client } from '../../models/Client';
 import { ClientService } from '../../servico/client.service';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [RouterLink, FormsModule, CommonModule],
+  imports: [RouterLink, FormsModule, CommonModule,],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css'
 })
 export class CadastroComponent {
 
   client = new Client();
-
   clients:Client[] = [];
+ 
+  constructor(private service: ClientService, private snackBar: MatSnackBar) { }
 
-  constructor(private service:ClientService){}
+  cadastrar(): void {
 
-  cadastrar():void{
 
-    try{
-    this.service.cadastrar(this.client)
-    .subscribe(retorno => {
-      this.clients.push(retorno)
-      this.client = new Client()
-    })
-    }catch{
-      alert("problema ao realizar o cadastro")
+    this.client.cpf.toString();
+    this.client.tel.toString();
+
+    if (this.client.cpf && this.client.tel && this.client.name && this.client.email != '') {
+      const add = this.service.cadastrar(this.client)
+
+
+      add.subscribe(retorno => {
+        this.clients.push(retorno)
+        this.onSucess()
+      }, erro => {
+        this.onCpf()
+      })
+      
+    }else{
+        this.onErro()
     }
 
-    alert("Cliente cadastrado")
-    
-
-
   }
+
+  onSucess(){
+    this.snackBar.open("Usuario cadastrado com sucesso", '', {
+      duration: 5000
+    })
+  }
+
+  onErro(){
+    this.snackBar.open("Preencha todos os campos para efetuar o cadastrado corretamente", '', {
+      duration: 5000
+    })
+  }
+
+  onCpf(){
+    this.snackBar.open("CPF invalido ou E-mail ja cadastrado", '', {duration: 3000})
+  }
+
 
 }

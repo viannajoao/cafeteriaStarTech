@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Client } from '../../models/Client';
 import { ClientService } from '../../servico/client.service';
+import { Client } from '../../models/Client';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -10,22 +10,32 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
+import { Credito } from '../../models/Credito';
 
 @Component({
-  selector: 'app-main',
+  selector: 'app-add-credito',
   standalone: true,
   imports: [FormsModule, CommonModule, RouterLink, MatInputModule, MatFormFieldModule, MatButtonModule, MatIconModule, MatDividerModule, MatTableModule],
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.css'
+  templateUrl: './add-credito.component.html',
+  styleUrl: './add-credito.component.css'
 })
-export class MainComponent {
+export class AddCreditoComponent {
 
   clients:Client[] = [];
   clientsFiltered: Client[] = [];
   termoPesquisa: string = "";
-  displayedColumns = [ 'cpf' , 'name', 'email', 'tel'];
+   displayedColumns = [ 'numero' , 'cliente', 'limite', 'validade'];
+
+   credits:Credito[] = [];
+   creditsFiltered:Credito[] = [];
+
 
   constructor(private service:ClientService){}
+
+  selecionarCard():void{
+    this.service.selecionarCartoes()
+    .subscribe( retorno => this.credits = retorno)
+  }
 
   selecionar():void{
     this.service.selecionar()
@@ -39,15 +49,17 @@ export class MainComponent {
     )
   }
 
-  pesquisarClient() {
+
+  pesquisar() {
     this.clientsFiltered = this.clients.filter(usuario =>
       usuario.name.toLowerCase().includes(this.termoPesquisa.toLowerCase())
     );
   }
 
   ngOnInit():void{
-    this.selecionar();
-    console.log(this.clients)
+    this.selecionarCard();
+    console.log(this.credits)
   }
+
 
 }

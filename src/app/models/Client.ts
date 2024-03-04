@@ -1,10 +1,10 @@
 export class Client{
 
 
-  cpf:number = 0;
+  cpf:string = "";
   name:string = "";
   email:string = "";
-  tel:number = 0;
+  tel:string = "";
   
 
 }
