@@ -17,29 +17,34 @@ export class CadastroComponent {
 
   client = new Client();
   clients:Client[] = [];
- 
+
   constructor(private service: ClientService, private snackBar: MatSnackBar) { }
 
   cadastrar(): void {
 
 
-    this.client.cpf.toString();
+    //this.client.cpf.toString();
     this.client.tel.toString();
 
-    // if (this.client.cpf && this.client.tel && this.client.name && this.client.email != '') {
-      this.service.cadastrar(this.client)
+    if (this.client.cpf && this.client.tel && this.client.name && this.client.email != '') {
+    const add = this.service.cadastrar(this.client)
 
 
-      .subscribe(retorno => 
-        // this.clients.push(retorno)
+
+
+        try{
+          add.subscribe(retorno =>{
+        this.clients.push(retorno)
         this.onSucess()
-      , erro => {
-        this.onCpf()
-      })
-      
-    // }else{
-    //     this.onErro()
-    // }
+        this.client = new Client()})
+        }catch(err){
+          this.onCpf()
+        }
+
+
+    }else{
+        this.onErro()
+    }
 
   }
 
