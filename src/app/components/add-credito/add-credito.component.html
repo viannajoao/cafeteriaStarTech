@@ -1,5 +1,5 @@
 <div class="inputClient">
-  <button mat-raised-button color="primary" routerLink="cadastrarCartoes">Cadastrar novo Cartão</button>
+  <button mat-raised-button color="primary" routerLink="cadastrarCartao">Cadastrar novo Cartão</button>
   <h1 class="title">Listagem de Cartões</h1>
 </div>
 
@@ -14,7 +14,7 @@
 </div>
 
 
-  <table mat-table [dataSource]="credits" class="mat-elevation-z8">
+  <table mat-table [dataSource]="creditsFiltered" class="mat-elevation-z8">
 
     <ng-container matColumnDef="numero">
       <th mat-header-cell *matHeaderCellDef> Numero </th>

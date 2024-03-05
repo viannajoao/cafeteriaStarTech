@@ -34,7 +34,10 @@ export class AddCreditoComponent {
 
   selecionarCard():void{
     this.service.selecionarCartoes()
-    .subscribe( retorno => this.credits = retorno)
+    .subscribe( retorno => {
+      this.credits = retorno
+      this.creditsFiltered = this.credits
+    })
   }
 
   selecionar():void{
@@ -51,8 +54,8 @@ export class AddCreditoComponent {
 
 
   pesquisar() {
-    this.clientsFiltered = this.clients.filter(usuario =>
-      usuario.name.toLowerCase().includes(this.termoPesquisa.toLowerCase())
+    this.creditsFiltered = this.credits.filter(usuario =>
+      usuario.client.toLowerCase().includes(this.termoPesquisa.toLowerCase())
     );
   }
 

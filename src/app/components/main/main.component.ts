@@ -22,7 +22,7 @@ export class MainComponent {
 
   clients:Client[] = [];
   clientsFiltered: Client[] = [];
-  termoPesquisa: string = "";
+  clientSearch: string = "";
   displayedColumns = [ 'cpf' , 'name', 'email', 'tel'];
 
   constructor(private service:ClientService){}
@@ -40,8 +40,9 @@ export class MainComponent {
   }
 
   pesquisar() {
+    console.log(this.clientsFiltered)
     this.clientsFiltered = this.clients.filter(usuario =>
-      usuario.name.toLowerCase().includes(this.termoPesquisa.toLowerCase())
+      usuario.name.toLowerCase().includes(this.clientSearch.toLowerCase())
     );
   }
 

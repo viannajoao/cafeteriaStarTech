@@ -16,13 +16,13 @@ import { AddCreditoComponent } from './components/add-credito/add-credito.compon
     component: MainComponent
   },
   {
-    path: 'cadastrarCartoes',
-    component: CartoesComponent
-  },
-  {
     path: 'credito',
     component: AddCreditoComponent
-  }
+  },
+  {
+    path: 'credito/cadastrarCartao',
+    component: CartoesComponent
+  },
 ];
 
 
